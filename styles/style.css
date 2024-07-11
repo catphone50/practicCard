@@ -30,7 +30,9 @@ form button {
 .container {
   max-width: 350px;
   padding: 20px 16px;
-  display: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .btn {
@@ -49,8 +51,13 @@ form button {
 }
 .active {
   display: flex;
-  flex-direction: column;
   gap: 16px;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+}
+.infoOrderElement {
+  background-color: rgb(236, 248, 238);
+  border-radius: 16px;
 }
 
 .icon {
@@ -59,8 +66,10 @@ form button {
   background-color: rgb(243, 236, 228);
   color: black;
   display: flex;
-  padding: 5px;
+  width: 35px;
+  height: 35px;
   align-items: center;
+  justify-content: center;
 }
 
 .icon span {
@@ -75,6 +84,9 @@ form button {
   gap: 16px;
   border-radius: 16px;
   box-shadow: 10px 5px 5px rgb(56, 80, 65);
+}
+.card > *:not(:first-child):not(:last-child) {
+  flex-grow: 1;
 }
 
 .card h3 {
@@ -98,4 +110,16 @@ form button {
   border: 1px solid black;
   border-radius: 4px;
   padding: 6px 10px;
+}
+.cancel {
+  background-color: transparent;
+  color: black;
+}
+
+.warning {
+  background-color: rgb(240, 165, 25);
+}
+
+.error {
+  background-color: rgb(231, 32, 32);
 }
