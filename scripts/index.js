@@ -7,9 +7,11 @@ const inputAddress = document.querySelector(".address");
 const inputPrice = document.querySelector(".price");
 const inputName = document.querySelector(".name");
 const containerInfo = document.querySelector(".containerInfo");
-const listOfOrder = [];
+
+listOfOrder = JSON.parse(localStorage.getItem("listOfOrder")) || [];
 
 function printOrder() {
+  containerInfo.innerHTML = "";
   listOfOrder.forEach((order) => {
     const infoOrderInner = `
   <div class="containerInfoCard">
@@ -40,6 +42,9 @@ form.addEventListener("submit", function (event) {
     name: inputName.value,
   };
   listOfOrder.push(order);
+
+  localStorage.setItem("listOfOrder", JSON.stringify(listOfOrder));
+
   container.classList.add("active");
   containerCard.classList.add("active");
 
