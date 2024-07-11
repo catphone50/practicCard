@@ -55,10 +55,12 @@ form button {
 
 .icon {
   border-radius: 50%;
-  margin: 10px;
+  margin: 5px;
   background-color: rgb(243, 236, 228);
   color: black;
-  padding: 5px 3px;
+  display: flex;
+  padding: 5px;
+  align-items: center;
 }
 
 .icon span {
@@ -71,6 +73,8 @@ form button {
   display: flex;
   padding: 16px;
   gap: 16px;
+  border-radius: 16px;
+  box-shadow: 10px 5px 5px rgb(56, 80, 65);
 }
 
 .card h3 {
