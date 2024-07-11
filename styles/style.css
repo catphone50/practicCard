@@ -87,3 +87,15 @@ form button {
   color: white;
   height: 20px;
 }
+
+.containerInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 6px 10px;
+}
+.containerInfoCard {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 6px 10px;
+}
