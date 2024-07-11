@@ -20,6 +20,12 @@ input {
   border-radius: 4px;
 }
 
+input:focus {
+  border: 1px solid darkgreen;
+  outline: none;
+  box-shadow: 0 0 10px rgb(59, 114, 53);
+}
+
 form button {
   padding: 5px 16px;
   border-radius: 4px;
@@ -56,7 +62,6 @@ form button {
   justify-content: flex-end;
 }
 .infoOrderElement {
-  background-color: rgb(236, 248, 238);
   border-radius: 16px;
 }
 
@@ -84,9 +89,21 @@ form button {
   gap: 16px;
   border-radius: 16px;
   box-shadow: 10px 5px 5px rgb(56, 80, 65);
+  transform: translateX(100%);
+  transition: transform 1.5s;
 }
+
+.anim {
+  transform: translateX(0);
+}
+
 .card > *:not(:first-child):not(:last-child) {
   flex-grow: 1;
+}
+
+.card-fade-out {
+  transition: opacity 2s;
+  opacity: 0;
 }
 
 .card h3 {
@@ -122,4 +139,9 @@ form button {
 
 .error {
   background-color: rgb(231, 32, 32);
+}
+
+.invalid {
+  border: 3px solid red;
+  box-shadow: 0 0 10px red;
 }

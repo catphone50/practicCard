@@ -32,6 +32,10 @@ function printOrder() {
     infoOrderElement.innerHTML = infoOrderInner;
     containerInfo.appendChild(infoOrderElement);
 
+    order.payment === true
+      ? (infoOrderElement.style.backgroundColor = "#CCFBCC")
+      : (infoOrderElement.style.backgroundColor = "#B4F8FB");
+
     const cancelButton = infoOrderElement.querySelector(".cancel");
     cancelButton.addEventListener("click", () => {
       listOfOrder = listOfOrder.filter((o) => o.id !== order.id);
@@ -77,6 +81,10 @@ function printCard(status, header, info) {
 
   const card = document.createElement("div");
   card.className = "card";
+  setTimeout(() => {
+    card.classList.add("anim");
+  }, 0);
+
   card.innerHTML = cardInner;
   const closeBtn = document.createElement("button");
   closeBtn.type = "button";
@@ -94,6 +102,13 @@ function printCard(status, header, info) {
     : status === "warning"
     ? card.classList.add("warning")
     : card.classList.add("error");
+
+  setTimeout(() => {
+    card.classList.add("card-fade-out");
+  }, 10000);
+  setTimeout(() => {
+    card.remove();
+  }, 12000);
 }
 
 printOrder();
@@ -118,3 +133,43 @@ form.addEventListener("submit", function (event) {
 
   printOrder();
 });
+
+inputAddress.addEventListener("input", validateAddress);
+inputPrice.addEventListener("input", validatePrice);
+inputName.addEventListener("input", validateName);
+
+function validateAddress() {
+  const addressValue = inputAddress.value.trim();
+  const addressPattern = /^[а-яА-Яa-zA-Z0-9\s,.-]{3,}$/;
+  if (!addressPattern.test(addressValue)) {
+    inputAddress.classList.add("invalid");
+    inputAddress.setCustomValidity("Please enter a valid address");
+  } else {
+    inputAddress.classList.remove("invalid");
+    inputAddress.setCustomValidity("");
+  }
+}
+
+function validatePrice() {
+  const priceValue = inputPrice.value.trim();
+  const pricePattern = /^\d+(\.\d+)?$/;
+  if (!pricePattern.test(priceValue)) {
+    inputPrice.classList.add("invalid");
+    inputPrice.setCustomValidity("Please enter a valid price");
+  } else {
+    inputPrice.classList.remove("invalid");
+    inputPrice.setCustomValidity("");
+  }
+}
+
+function validateName() {
+  const nameValue = inputName.value.trim();
+  const namePattern = /^[а-яА-Яa-zA-Z\s]{2,50}$/;
+  if (!namePattern.test(nameValue)) {
+    inputName.classList.add("invalid");
+    inputName.setCustomValidity("Enter a valid name");
+  } else {
+    inputName.classList.remove("invalid");
+    inputName.setCustomValidity("");
+  }
+}
